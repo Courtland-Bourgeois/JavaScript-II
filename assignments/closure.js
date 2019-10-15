@@ -5,6 +5,23 @@
 // The outer scope can be a parent function, or the top level of the script.
 
 
+function first(firstName) {
+  console.log(`My first name is ${firstName}.`);
+
+  function middle(middleName) {
+    console.log(`My middle name is ${middleName}, and my first name is ${firstName}.`);
+  
+      function last(lastName) {
+        console.log(`My last name is ${lastName}, my middle name is ${middleName}, and my first name is ${firstName}.`);
+    } 
+    last('Bourgeois');
+  } 
+  middle('Samuel');
+} 
+first('Courtland');
+
+
+
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
 
