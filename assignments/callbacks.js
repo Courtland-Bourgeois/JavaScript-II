@@ -39,31 +39,98 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 */
 
 
+
+
+/////////////////////////////////////////////// CHALLENGE ONE ///////////////////////////////////////////////
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr.length);
 }
 
+const test3 = getLength(items, item => `The length of the array is ${item}.`);
+console.log(test3);
+/////////////////////////////////////////////// CHALLENGE ONE ///////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// CHALLENGE TWO ///////////////////////////////////////////////
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
+  return cb(arr.pop());
 }
 
+function lastItem(boom) {
+  return `The last item in the array is ${boom}.`;
+}
+const test4 = last(items, lastItem);
+console.log(test4);
+/////////////////////////////////////////////// CHALLENGE TWO ///////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// CHALLENGE THREE ///////////////////////////////////////////////
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return cb(x, y);
 }
 
+function addNums(a, b) {
+  return a + b;
+}
+const test5 = sumNums(1, 2, addNums);
+console.log(test5);
+/////////////////////////////////////////////// CHALLENGE THREE ///////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// CHALLENGE FOUR ///////////////////////////////////////////////
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  return cb(x, y);
 }
 
+function timesNums(a, b) {
+  return a * b;
+}
+const test6 = multiplyNums(2, 2, timesNums);
+console.log(test6);
+/////////////////////////////////////////////// CHALLENGE FOUR ///////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// CHALLENGE FIVE ///////////////////////////////////////////////
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  if (list.includes(item)) {
+    return cb(true);
+  } else {
+    return cb(false);
+  }
 }
 
-/* STRETCH PROBLEM */
+contains('Pencil', items, contain => console.log(contain));
+/////////////////////////////////////////////// CHALLENGE FIVE ///////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////// STRETCH PROBLEM ///////////////////////////////////////////////
+const stretchArray = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  let newArray = [];
+  newArray.push(array.filter((item, i) => array.indexOf(item) === i))
+  cb(newArray);
 }
+
+removeDuplicates(stretchArray, cb => console.log(cb));
+console.log(stretchArray);
+/////////////////////////////////////////////// STRETCH PROBLEM ///////////////////////////////////////////////
