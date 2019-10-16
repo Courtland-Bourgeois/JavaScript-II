@@ -27,52 +27,85 @@ first('Courtland');
 
 
 // ==== Challenge 2: Implement a "counter maker" function ====
-// const counterMaker = () => {
-//   // IMPLEMENTATION OF counterMaker:
-//   // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
-//   // 2- Declare a function `counter`. It should increment and return `count`.
-//   //      NOTE: This `counter` function, being nested inside `counterMaker`,
-//   //      "closes over" the `count` variable. It can "see" it in the parent scope!
-//   // 3- Return the `counter` function.
+const counterMaker = () => {
+  // IMPLEMENTATION OF counterMaker:
+  // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
+  // 2- Declare a function `counter`. It should increment and return `count`.
+  //      NOTE: This `counter` function, being nested inside `counterMaker`,
+  //      "closes over" the `count` variable. It can "see" it in the parent scope!
+  // 3- Return the `counter` function.
 
-//   let count = 0;
+  let count = 0;
 
-//     let counter = () => {
-//       return ++count;
-//     }
+    let counter = () => {
+      return ++count;
+    }
   
-//     return counter;
+    return counter;
 
-// };
+};
 
-// const myCounter = counterMaker();
-// console.log(myCounter()); // 1
-// console.log(myCounter()); // 2
+const myCounter = counterMaker();
+console.log(myCounter()); // 1
+console.log(myCounter()); // 2
 
 
+console.log('line break between challenges');
 
 
 // ==== Challenge 3: Make `counterMaker` more sophisticated ====
 // It should have a `limit` parameter. Any counters we make with `counterMaker`
 // will refuse to go over the limit, and start back at 1.
-const counterMaker = (limit) => {
+const counterMakerSophisticated = (limit) => {
   let count = 0;
 
+  let counter = () => {
+    count++
+    if (count <= 3) {
+      return count;
+    } else {
+      count = 1
+      return count;
+    }
+  }
+  return counter
 }
 
-const myCounter = counterMaker(3);
-console.log(myCounter()); // 1
-console.log(myCounter()); // 2
-console.log(myCounter()); // 3
-console.log(myCounter()); // 1
-console.log(myCounter()); // 2
-console.log(myCounter()); // 3
+const myCounterSophisticated = counterMakerSophisticated(3);
+console.log(myCounterSophisticated()); // 1
+console.log(myCounterSophisticated()); // 2
+console.log(myCounterSophisticated()); // 3
+console.log(myCounterSophisticated()); // 1
+console.log(myCounterSophisticated()); // 2
+console.log(myCounterSophisticated()); // 3
 
 
+console.log('line break between challenges');
 
 // ==== Challenge 4: Create a counter function with an object that can increment and decrement ====
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-};
+  let counter = 0;
+  return {
+    increment: function() { 
+    counter += 1
+    console.log(counter);
+    },
+
+    decrement: function() {
+      counter -= 1
+      console.log(counter);
+    }
+  }
+}
+
+const myCounterCrement = counterFactory();
+myCounterCrement.increment();
+myCounterCrement.increment();
+myCounterCrement.increment();
+
+myCounterCrement.decrement();
+myCounterCrement.decrement();
+myCounterCrement.decrement();
